@@ -1,0 +1,140 @@
+\chapter{Introduction}
+
+\section{Numbers}
+In this course we denote
+\begin{align*}
+  \N &= \setof{1,2,3,\ldots} \\
+  \Z &= \setof{\ldots, -2, -1, 0, 1, 2, \ldots} \\
+  \Q &= \setof{\frac{a}{b} : a \in \Z \text{ and } b \in \N} \\
+  \R &= \text{set of real numbers} \\
+  \C &= \setof{a+bi:a,b\in\R \text{ and } i^2 = -1} \\
+     &= \text{set of complex numbers}
+\end{align*}
+
+For $n \in \Z$ let $\Z_n$ denote the set of integers modulo n, i.e.
+\begin{align*}
+  \Z_n &= \setof{\bracket{0}, \bracket{1}, \ldots, \bracket{n-1}}
+\end{align*}
+with congruence classes
+\begin{align*}
+  \bracket{r} &= \setof{z \in \Z : z \equiv r \mod n} & (0 \le r \le n-1)
+\end{align*}
+
+We note that for $R = \N$, $\Z$, $\Q$, $\R$, $\C$, or $\Z_n$ we have two
+operations: addition and multiplication.
+
+\subsection{Addition}
+If $r_1, r_2, r_3 \in R$ then
+\begin{align*}
+  & r_1 + r_2 \in R & &\text{(\keyword{closure})} \\
+  & r_1 + (r_2 + r_3) = (r_1 + r_2) + r_3 & &\text{(\keyword{associativity})}
+\end{align*}
+
+Also, if $R \ne \N$, there exists $0 \in R$ (\keyword{identity}) such that, for all
+$r \in \R$
+$$r + 0 = r = r + 0$$
+and there exists $-r \in R$ (\keyword{inverse}) such that
+$$r + (-r) = 0 = (-r) + r$$
+
+\subsection{Multiplication}
+If $r_1, r_2, r_3 \in R$ then
+$$r_1 \cdot r_2 \in R$$
+$$r_1 \cdot (r_2 \cdot r_3) = (r_1 \cdot r_2) \cdot r_3$$
+
+Also, there exists $1 \in R$ such that, for all $r \in R$
+$$r \cdot 1 = r = 1 \cdot r$$
+
+Finally, for $R = \Q$, $\R$, $\C$, if $r \in R$, there exists
+$\frac{1}{r} \in R$ such that
+$$r \cdot \frac1r = 1 = \frac1r \cdot r$$
+
+We note that for $R = \Z_n$, not all $\bracket{r} \in \Z_n$ have a
+``\keyword{multiplicative inverse}."
+For example, for $\bracket{2} \in \Z_4$ there is no $\bracket{x} \in \Z_4$
+such that $\bracket{2}\cdot\bracket{x}=\bracket{1}$.
+
+
+\section{Matrices}
+
+For $n \in \N$, an \keyword{$n \times n$ matrix over $\R$} (where $\R$ can be
+replaced by $\Q$ or $\C$) is an $n \times n$ array
+$$A = \bracket{a_{ij}} = \bmatr{
+  a_{11} & a_{12} & \cdots & a_{1n} \\
+  a_{21} & a_{22} & \cdots & a_{2n} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  a_{n1} & a_{n2} & \cdots & a_{nn}
+}$$
+where $a_{ij} \in \R (1 \le i,j \le n)$.
+
+We denote by \keyword{$\Mn\R$} the set of all $n \times n$ matrices over $\R$.
+
+\subsection{Matrix Addition}
+Given $A = \bracket{a_{ij}}$, $B = \bracket{b_{ij}} \in \Mn\R$, we define
+$$A + B = [a_{ij} + b_{ij}]$$
+
+Note that $A+B \in \Mn\R$ and for $A$, $B$, $C \in \Mn\R$ we have
+$$A+(B+C) = (A+B)+C$$
+
+Define $0 \in \Mn\R$ by
+$$0 = \bmatr{
+  0 & 0 & \cdots & 0 \\
+  0 & 0 & \cdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \cdots & 0
+}$$
+
+Thus we have
+$$A+0=A=0+A$$
+
+Finally, for $A \in \Mn\R$, there exists $-A = \bracket{-a_{ij}} \in \Mn\R$
+such that
+$$A + (-A) = 0 = (-A) + A$$
+
+We also note that in this case
+\begin{align*}
+  & A+B = B+A & & \text{(\keyword{commutativity})}
+\end{align*}
+
+\subsection{Matrix Multiplication}
+Given $A=\bracket{a_{ij}}$, $B=\bracket{b_{ij}} \in \Mn\R$ we define
+\begin{align*}
+  AB & = \bracket{c_{ij}} & c_{ij} &= \sum_{k=1}^na_{ik}b_{kj}
+\end{align*}
+
+Note that $AB \in \Mn\R$. Also, for $A$, $B$, $C \in \Mn\R$ we have
+$$A(BC) = (AB)C$$
+
+Define $I \in \Mn\R$ by
+$$I = \bmatr{
+  1 & 0 & \cdots & 0 \\
+  0 & 1 & \cdots & 0 \\
+  \vdots & \vdots & \ddots & \vdots \\
+  0 & 0 & \cdots & 1
+}$$
+
+Then we have
+$$AI = A = IA$$
+
+However, for $A \in \Mn\R$, it is not always ture that there exists some
+$\inv{A} \in \Mn\R$ such that
+$$A\inv{A} = I = \inv{A}A$$
+
+Also, we can find $A$, $B \in \Mn\R$ such that
+$$AB \ne BA$$
+
+
+\section{Permutations}
+
+\begin{definition}
+  Let $f : X \to Y$ be a function, we say $f$ is \keyword{1-1} if
+  $$f(x_1) = f(x_2) \implies x_1 = x_2$$
+  We say $f$ is \keyword{onto} if for all $y \in Y$, there exists $x \in X$
+  such that
+  $$f(x) = y$$
+  If $f$ is 1-1 and onto, then we say $f$ is a \keyword{bijection}.
+\end{definition}
+
+\begin{definition}
+  Given a non-empty set $L$, a \keyword{permutation} of $L$ is a bijection from
+  $L$ to $L$. The set of permutations of $L$ is denoted by $S_L$
+\end{definition}
